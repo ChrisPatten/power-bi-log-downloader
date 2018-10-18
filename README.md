@@ -9,6 +9,8 @@ A PowerShell script to handle downloading Power BI audit logs for further analys
 * [Output](#output)
 
 # Requirements
+You must have auditing enabled for your Power BI tenant (more info on [Power BI Admin Portal](https://docs.microsoft.com/en-us/power-bi/service-admin-portal#audit-logs) and [Using Auditing Within your Organization](https://docs.microsoft.com/en-us/power-bi/service-admin-auditing)). Additionally, you must be a Power BI Service admin, have an Exchange Online license, and have an Exchange admin role that provides access to the audit log.
+
 This script uses the Exchange Online PowerShell module ([instructions here](https://docs.microsoft.com/en-us/powershell/exchange/exchange-online/connect-to-exchange-online-powershell/connect-to-exchange-online-powershell?view=exchange-ps)). My org uses multi-factor authentication, so I used [these instructions](https://docs.microsoft.com/en-us/powershell/exchange/exchange-online/connect-to-exchange-online-powershell/mfa-connect-to-exchange-online-powershell?view=exchange-ps) to get started.
 
 # Syntax
