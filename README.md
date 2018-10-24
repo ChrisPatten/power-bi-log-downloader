@@ -13,6 +13,8 @@ You must have auditing enabled for your Power BI tenant (more info on [Power BI 
 
 This script uses the Exchange Online PowerShell module ([instructions here](https://docs.microsoft.com/en-us/powershell/exchange/exchange-online/connect-to-exchange-online-powershell/connect-to-exchange-online-powershell?view=exchange-ps)). My org uses multi-factor authentication, so I used [these instructions](https://docs.microsoft.com/en-us/powershell/exchange/exchange-online/connect-to-exchange-online-powershell/mfa-connect-to-exchange-online-powershell?view=exchange-ps) to get started.
 
+If you're using the normal Exchange Online module, you'll need to create your session first. If you're using the MFA version you'll need to launch the special PowerShell session and run the script from there.
+
 # Syntax
 ```powershell
 Get-PowerBILogs
@@ -29,7 +31,7 @@ The earliest date to return logs for. If you don't include a timestamp in the va
 | | |
 | --- | --- |
 | Type: | ExDateTime |
-| Position: | 0 |
+| Position: | 1 |
 | Default value: | 16 days before current date |
 | Accept pipeline input: | False |
 | Accept wildcard characters: | False |
@@ -40,7 +42,7 @@ The number of days from `-StartDate` to return logs for.
 | | |
 | --- | --- |
 | Type: | Int32 |
-| Position: | 1 |
+| Position: | 2 |
 | Default value: | 15 |
 | Accept pipeline input: | False |
 | Accept wildcard characters: | False |
