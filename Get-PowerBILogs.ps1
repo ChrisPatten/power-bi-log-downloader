@@ -1,7 +1,12 @@
 Param(
-    [DateTime]$StartDate,
+    [Parameter(Position=1)]
+    [DateTime]$StartDate = $(Get-Date.AddDays(-16)),
+    
+    [Parameter(Position=2)]
     [int]$Days = 15,
+    
     [int]$BatchSize = 5000,
+    
     [int]$MaxResults = 100000000
 )
 
@@ -13,6 +18,8 @@ $SessionId = Get-Date
 If ($BatchSize -gt $MaxResults) {
     $BatchSize = $MaxResults
 }
+
+Connect-EXOPSSession
 
 Write-Host "Getting Power BI Create/View activity for period $($StartDate.ToString("MM/dd/yyyy")) to $($EndDate.ToString("MM/dd/yyyy"))"
 
@@ -54,5 +61,6 @@ Write-Host "Total: $($Results.Count) results found! Last date: $((($Results | Me
 $Results | Select-Object -Property CreationDate, UserIds, Operations, AuditData `
     | Export-Csv -NoTypeInformation -Path "AuditLog_$($StartDate.ToString("yyyy-MM-dd"))_$($EndDate.ToString("yyyy-MM-dd")).csv"
 
+Get-PSSession | Remove-PSSession
 
 Write-Host "Complete!"
